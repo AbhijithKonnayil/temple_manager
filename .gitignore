@@ -1,0 +1,10 @@
+*.pyc
+*/*.pyc
+__pycache__/
+*iml
+*xml
+/idea/*
+*/__pycache__/*.pyc
+*.env
+media_img/
+.fuse_hidden*
