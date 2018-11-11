@@ -192,6 +192,7 @@ def add_vazhipadu(request):
                 obj.title=form.cleaned_data['title']
                 obj.amount=form.cleaned_data['amount']
                 obj.save()
+                form=VazhipaduForm()
         else:
             form=VazhipaduForm()
             
