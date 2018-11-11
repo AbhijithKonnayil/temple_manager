@@ -6,17 +6,17 @@ class ReceiptForm(forms.Form):
     name=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'autocomplete':'on'}))
     star=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'list':'star_choice'}))
     vazhipadu_1=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_1=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'type':'number','class':'count'}))
+    count_1=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_2=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_2=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'type':'number','class':'count'}))
+    count_2=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_3=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_3=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'type':'number','class':'count'}))
+    count_3=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_4=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_4=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'type':'number','class':'count'}))
+    count_4=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
 
 class VazhipaduForm(forms.Form):
     title = forms.CharField(max_length=25,required=True)
-    amount = forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'type':'number'}))
+    amount = forms.CharField(max_length=20, required=True,widget=TextInput(attrs={}))
     
 class DailyReportForm(forms.Form):
     date=forms.DateField(initial=datetime.date.today,widget=TextInput(attrs={'type':'date'}))
@@ -31,5 +31,5 @@ class MonthlyReportForm(forms.Form):
 class ExpenseForm(forms.Form):
     category_choices =(('Salary','salary'),)
     category = forms.ChoiceField(choices=category_choices,required=True)
-    amount = forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'type':'number'}))
+    amount = forms.CharField(max_length=20, required=True,widget=TextInput(attrs={}))
     remark = forms.CharField(max_length=100, required=False)
