@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style type="text/css">
+@media print {
+  button, nav, header{
+  	visibility: hidden;
+  }
+  img{
+  	visibility: visible;
+  }
+  body{
+  	margin: 0;
+  	padding: 0;
+  }
+  
+  #receipt{
+	margin: -100px 10px 20px 10px;
+	padding: 5px 10%;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 12px;
+	}
+	#temple-title-name{
+  	visibility: visible;
+  	transform: scale(0.5);
+  	text-align: center;
+  	border-bottom:1px #000 solid;
+  }
+	th{
+		padding: 3px 10px;
+	}
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<section>
+
+<div id="receipt">
+		<div>
+			<img id="temple-title-name" style="visibility: hidden;" src="{% static '/img/temple_name.png' %}">
+		</div>
+		<div id="receipt-title">
+				<u>രസീത് </u>
+		</div>
+		<div>
+			<div id="receipt-number">
+			<span>രസീത് നംമ്പർ : </span>
+			<span>{{receipt.id}}</span>
+		</div>
+
+		<div id="receipt-date">
+			<span>തീയതി : </span>
+			<span>{{receipt.date}}</span>
+		</div>
+		</div>
+
+		<div id="receipt-name">
+			<span>പേര് : </span>
+			<span>{{receipt.name}}</span>
+		</div>
+
+		<div id="receipt-star">
+			<span>നക്ഷത്രം : </span>
+			<span>{{receipt.star}}</span>
+		</div>
+
+			<table border="1">
+                          <thead>
+                            <tr class="border">
+                                <th>ക്രമ നമ്പര്‍</th>
+                                <th>വഴിപാട് ഇനം</th>
+                                <th>എണ്ണം</th>
+                                <th>തുക</th>
+                                <th>ആകെ തുക</th>
+                            </tr>
+                          </thead>
+                          {% for each in receipt_items %}
+	
+                          <tbody>
+                           <tr>
+								<td>{{forloop.counter}}</td>
+								<td>{{each.vazhipadu}}</td>
+								<td class="number">{{each.count}}</td>
+								<td class="number">{{each.vazhipadu.amount}}</td>
+								<td class="number">{{each.amount}}</td>
+							</tr>
+							{% endfor %}
+                          </tbody>
+				</table>
+		<div  id="grand-total">
+			<h2>ആകെ തുക: Rs {{receipt.total_amount}}	</h2>
+		</div>
+		<div id="user-designation">
+			{{request.user}}
+		</div>
+		<div>
+              <a href="../receipt/"><button>Add Another</button></a>
+              <button onclick="window.print();" name="button">Print</button>
+          </div>
+</div>
+
+
+
+{% endblock %}

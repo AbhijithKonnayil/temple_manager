@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div id="report">
+Are You Sure you want to delete this record ?
+{{record.category}}
+{{record.amount}}
+{{record.remark}}
+
+<form action="" method="POST">
+	{% csrf_token %}
+	<input type="submit" name="">
+	
+</form>
+</div>
+{% endblock %}

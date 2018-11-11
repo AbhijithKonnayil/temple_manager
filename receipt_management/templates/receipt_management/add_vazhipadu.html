@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block body %}
+<section>
+	<div id="report">
+		<div>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table>
+					<tr>
+						<td>Title</td>
+						<td>{{form.title}}</td>
+					</tr>
+					<tr>
+						<td>Amount</td>
+						<td>{{form.amount}}</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="Add Vazhipadu">			
+						</td>
+					</tr>
+				</table>			
+				
+			</form>
+		</div>
+
+	</div>
+</section>
+
+<div id="report-details">
+		<div>
+			<table>
+				<tr>
+					
+					<th>si No</th>
+					<th>Vazhipadu</th>
+					<th>Amount</th>
+				</tr>
+				</tr>
+				{% for each in vazhipadu_list %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{each.title}}</td>
+						<td>{{each.amount}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+</div>
+
+{% endblock %}

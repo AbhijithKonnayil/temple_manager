@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% load static %}
+{% block head %}
+<style type="text/css">
+@media print {
+  button, nav, header,#report{
+  	visibility: hidden;
+  }
+  img{
+  	visibility: visible;
+  }
+  body{
+  	margin: 0;
+  	padding: 0;
+  }
+  #report-details{
+  	margin: -100px 10px 20px 10px;
+  }
+
+	#temple-title-name{
+  	visibility: visible;
+  	transform: scale(0.5);
+  	text-align: center;
+  	border-bottom:1px #000 solid;
+  }
+	th{
+		padding: 3px 10px;
+	}
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<section>
+	<div id="report">
+		<div>
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{form}}
+				
+				<input type="submit" name="">
+			</form>
+		</div>
+
+	</div>
+	<div>
+				<img id="temple-title-name" style="visibility: hidden;" src="{% static '/img/temple_name.png' %}">
+			</div>
+	<div id="report-details">
+		<div>
+			
+			<div id="report-title">
+				<u><h2>റിപ്പോർട്ട്</h2></u>
+				<p>Date : {{date}}</p>
+			</div>
+
+			<table border="1">
+			<tr>
+				<th>Si No</th>
+				<th>Vazhipadu</th>
+				<th>Count</th>
+				<th>Sum</th>
+			</tr>
+			{% for each in report %}
+				<tr>
+				<td>{{forloop.counter}}</td>
+				<td>{{each.vazhipadu|idToTitle}}</td>
+				<td>{{each.count}}</td>
+				<td>{{each.sum}}</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<th colspan="2">
+					Total
+				</th>
+				<th colspan="2">
+					{{total_sum}}		
+				</th>
+			</tr>
+		</table>
+		Expense
+		<table border="1">
+			<tr>
+				<th>Si No</th>
+				<th>Category</th>
+				<th>Amount</th>
+				<th>Remark</th>
+			</tr>
+			{% for each in expense_list %}
+				<tr>
+				<td>{{forloop.counter}}</td>
+				<td>{{each.category}}</td>
+				<td>{{each.amount}}</td>
+				<td>{{each.remark}}</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<th colspan="2">
+					Total
+				</th>
+				<th colspan="2">
+					{{total_expense}}		
+				</th>
+			</tr>
+		</table>
+		
+		</div>
+		
+	</div>
+
+</section>
+{% endblock %}

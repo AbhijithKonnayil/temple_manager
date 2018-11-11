@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href ="../../../static/css/style.css">
+    {% if user.is_authenticated %}
+        <meta http-equiv="refresh" content="0; URL='/dashboard'">
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div id="header">
+            <img id="title" src="../../../static/img/temple_name.png">
+        </div>    
+    </header>
+    <section>
+        <div  id="login">
+            <div id="shiva-img">
+                    
+                </div>
+            <div id="login-box">
+                <form method='POST'>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <div>
+                        <input type="text" name="username" placeholder="Username" autofocus required id="id_username" maxlength="254" class="form-control">
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" name="password" required id="id_password" class="form-control">
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-success ">      
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

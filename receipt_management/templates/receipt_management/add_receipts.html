@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block head %}
+  <script>
+$(document).ready(function(){
+    $(".add-row-btn").click(function(){
+        var row_no=(parseInt($(this).attr('rowno'))+1);
+        $("#row"+row_no).show();
+    });
+
+    $(".vazhipadu").blur(function(){
+        var row_no = $(this).attr('name').substr(-1);
+        {% for each in vazhipadu %}
+          if($(this).val()=='{{each}}')
+          {
+            $("td.prize"+ row_no).html("{{each.amount}}");
+          }
+        {% endfor %}
+        
+    });
+
+    $(".count").blur(function(){
+      var row_no = $(this).attr('name').substr(-1);
+      var tot = parseInt($("td.prize"+ row_no).text()) * $(this).val();
+      $("td.total"+ row_no).html(tot);
+    });
+});
+
+</script>
+{% endblock %}
+{% block body %}
+
+<datalist id="star_choice">
+  {% for each in stars %}
+    <option value="{{each.0}}">{{each.1}}</option>
+  {% endfor %}
+</datalist>
+
+<datalist id="vazhipadu_choice">
+  {% for each in vazhipadu %}
+    <option value="{{each}}"></option>
+  {% endfor %}
+</datalist>
+
+<section>
+    <div id="receipt-form">
+          <form action="" method="POST" autocomplete="on">
+           {% csrf_token %}
+          <div class="heading">
+              <h3 >രസീത്</h3>
+          </div>
+          <div>
+              <span class="form-label">പേര്</span>
+              {{form.name}}
+          </div>
+          <div>
+              <span class="form-label">നക്ഷത്രം</span>
+              {{form.star}}
+          </div>
+
+          <div>
+          
+
+                     <table>
+                          <thead>
+                            <tr class="border">
+                                <th>ക്രമ നമ്പര്‍</th>
+                                <th>വഴിപാട് ഇനം</th>
+                                <th>എണ്ണം</th>
+                                <th>തുക</th>
+                                <th>ആകെ തുക</th>
+                            </tr>
+                          </thead>
+                          
+                          <tbody>
+                            <tr id="row1" class="border">
+                              <td>1</td>
+                              <td>{{form.vazhipadu_1}}</td>
+                              <td>{{form.count_1}}</td>
+                              <td class="prize1">0.00</td>
+                              <td class="total1">0.00</td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="1" class="add-row-btn">+</button></td>
+                            </tr>
+
+                            <tr id="row2"class="border">
+                              <td>2</td>
+                              <td>{{form.vazhipadu_2}}</td>
+                              <td>{{form.count_2}}</td>
+                              <td class="prize2">0.00</td>
+                              <td class="total2">0.00</td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="2" class="add-row-btn">+</button></td>
+                            </tr>
+
+                            <tr id="row3" class="border">
+                              <td>3</td>
+                              <td>{{form.vazhipadu_3}}</td>
+                              <td>{{form.count_3}}</td>
+                              <td class="prize3">0.00</td>
+                              <td class="total3">0.00</td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="3" class="add-row-btn">+</button></td>
+                            </tr>
+
+                            <tr id="row4" class="border">
+                              <td>4</td>
+                              <td>{{form.vazhipadu_4}}</td>
+                              <td>{{form.count_4}}</td>
+                              <td class="prize4">0.00</td>
+                              <td class="total4">0.00</td>
+                            </tr>
+                          </tbody>
+                </table>
+          </div>
+      
+          <div>
+              <input type="reset" value="Reset" name="">
+              <input type="submit" value="Add" name="button" />
+          </div>
+
+    </div>
+    </form>  
+
+</section>
+  
+ 
+<!--******************************************************************************-->       
+<section>
+    <div id="receipt-list">       
+    <table border="1">
+        <tr>
+            <th>രസീത് നംമ്പർ</th>
+            <th>പേര് </th>
+            <th>നക്ഷത്രം </th>
+            <th>ആകെ തുക</th>
+            <th>തീയതി </th>
+        </tr>
+        {% for each in receipt %}
+          <tr>
+            <td>{{each.id}}</td>
+            <td>{{each.name}}</td>
+            <td>{{each.star}}</td>
+            <td>{{each.total_amount}}</td>
+            <td>{{each.date}}</td>
+          </tr>
+        {% endfor %}
+    </table>
+<!--******************************************************************************-->   
+  </div>      
+</section>
+
+ 
+{% endblock %}

@@ -1,0 +1,368 @@
+/*body{
+	width: 80%;
+	margin: auto;
+}
+#receipt table{
+	width: 100%;
+
+}
+
+#receipt-date{
+	float: right;
+}
+#receipt-name{
+	display: block;
+}
+#receipt-star{
+	display: block;
+}
+#grand-total{
+	float: right;
+	margin-right: 50px;
+}
+.number{
+	text-align: right;
+}
+*/
+body{
+	margin: 0;
+	padding: 0;
+	background-image: url('../img/background.jpg');
+	background-size: cover;
+}
+
+header div#header{
+	padding: 20px 0 0 0;
+	display: flex;
+	height: 75px;
+	justify-content: center;
+	background-image: linear-gradient(to bottom right, #d56d48, #c64e2a);
+	text-align: center;
+	box-shadow: 5px 5px 10px #333;
+}
+header div#header #title{
+	height: 40px;
+	width: auto;
+}
+
+header div#header div#text{
+	padding: 20px 0;
+	position: relative;
+	right: 100px;
+}
+header div#header h2{
+ margin:0px;
+ height: 30px;
+}
+
+header div#header h1{
+ margin: 0px;
+ height: 40px;
+}
+
+header #logo{
+	width: 150px;
+	height: 150px;
+	background-color: #463;
+	border-radius: 50%;
+	margin-right: 20px;
+	position: absolute;
+	left: 200px;
+	background-image: url('../img/shiva.png');
+	background-size: contain;
+	border: 5px #fff solid;
+	
+}
+/****************nav bar**************/
+nav{
+	position: absolute;
+	right: 20px;
+	height: 50px;
+}
+nav ul{
+	list-style: none;
+	float: right;
+}
+nav ul li{
+	float: left;
+}
+nav ul li a{
+	display: block;
+	padding: 20px 20px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #fff;
+}
+nav ul li a:hover{
+	background-color: #f00;
+}
+/****************end nav bar**************/
+
+/******dashboard********/
+section div#dashboard{
+	padding: 200px;
+	display: flex;
+	justify-content: center;
+}
+section div#dashboard a{
+	text-decoration: none;
+	font-size: 16px;
+}
+.dash_item{
+	margin: 30px;
+	padding: 50px;
+	border-radius: 50px;
+	background-color: #aaa;
+	text-align: center;
+	color: #fff;
+}
+.dash_item:hover{
+	background-color: #d56d48;
+}
+/***end dashboard*****/
+div#report, div#report-details{
+	display: flex;
+	margin-top: 50px;
+	justify-content: center;
+	background-color: #eee;
+	width: 50%;
+	margin: 50px auto;
+	padding: 20px 50px;
+}
+div#report-details table{
+	width: 90%;
+}
+div#report-details table th{
+	background-color: #0ff;
+}
+div#report-details table td,div#report-details table th{
+	min-width: 50px;
+	padding: 5px 30px;
+
+}
+
+#receipt{
+	margin: 100px 10% 20px 10%;
+	padding: 5px 10% 20px 10%;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	flex-direction: column;
+	background: #eadfdc;
+	font-size: 14px;
+}
+
+#receipt-form{
+	margin: 100px 10% 20px 10%;
+	padding: 5px 10%;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	background: #eadfdc;
+	font-size: 14px;
+}
+#row2,#row3,#row4{
+	display: none;
+}
+#receipt-form .heading{
+	display: block;
+	text-align: center;
+}
+#receipt-form div{
+	margin-bottom: 10px;
+}
+.form-label{
+	min-width: 100px;
+	display: inline-block;
+	text-align: left;
+	padding-left: 20px;
+}
+table{
+	text-align: center;
+}
+table td{
+	min-width: 50px;
+}
+table th{
+	min-width: 50px;
+	height: 50px;
+	font-size: 12px;
+}
+
+tr.border th{
+	border:1px solid #333;
+	padding: 0 10px;
+}
+tr.border td input{
+	border:0px solid #333;
+}
+tr.border td{
+	border:1px solid #333;
+	padding: 0;
+}
+input[type='text'],input[type='password'],select{
+	width: 300px;
+	height: 50px;
+	border:none;
+	border-radius: 10px;
+	font-size: 16px;
+	padding: 0 0 0 10px; 
+	background-color: #fff;
+}
+input[type='date']{
+	width: 200px;
+	height: 50px;
+	border:none;
+	border-radius: 10px;
+	font-size: 16px;
+	padding: 0 0 0 10px; 
+}
+input[type='reset']{
+	height: 50px;
+	width: 310px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 10px;
+	background-color: #d56d48;
+	border:0px;
+}
+button{
+	height: 50px;
+	width: 310px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 10px;
+	background-color: #1ca05a;
+	border:0px;
+}
+input[type='submit']{
+	height: 50px;
+	width: 310px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 10px;
+	background-color: #1ca05a;
+	border:0px;
+}
+input[type='number']{
+	width: 300px;
+	height: 50px;
+	font-size: 20px;
+	border-radius: 10px;
+	padding: 0 0 0 10px; 
+		border:0px;
+}
+.right{
+	text-align: right;
+	padding: 0 30px 0 0;
+}
+.left{
+	text-align: left;
+	padding: 0 0 0 0px;
+}
+#receipt-title,#report-title{
+	padding-top: 20px;
+	text-align: center;	
+	font-size: 24px;
+
+}
+#receipt-number{
+	width: 40%;
+	float: left;
+	font-size: 20px;
+	padding: 3px 0;
+}
+#receipt-date{
+	width: 40%;
+	float: right;
+	text-align: right;
+	font-size: 20px;
+	padding: 3px 0;	
+}
+#receipt-name{
+	font-size: 20px;
+	padding: 3px 0;
+}
+#user-designation{
+	font-size: 20px;
+	padding: 10px 20px 20px 20px;
+}
+
+#receipt-star{
+	font-size: 20px;
+	padding: 3px 0 20px 0;	
+}
+#grand-total{
+	text-align: right;
+	padding-right: 20px;
+}
+#receipt-list{
+	background-color: rgba(255,255,255,0.9);
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	width: 80%;
+}
+#receipt-list table {
+	margin: 20px 0;
+}
+#receipt-list table tr td{
+	font-size: 18px;
+	padding: 10px 30px;
+	min-width: 50px;
+}
+.add-row-btn{
+	height: 30px;
+	width: 30px;
+	border:0px;
+	background-color: #00f;
+	border-radius: 50%;
+	font-size: 15px;
+	font-weight: bold;
+	color: #fff;
+}
+
+/********login box *******/
+#login{
+	display: flex;
+	justify-content: center;
+
+}
+#login-box{
+	padding: 75px 30px 20px  30px;
+	border-top: 10px #d56d48 solid;
+	background-color:rgba(37,32,30,0.7);
+	position: absolute;
+	margin: 200px 0 0 0;
+}
+#login-box input[type='text'],input[type='password']{
+	width: 300px;
+	height: 40px;
+	border:none;
+	border-radius: 10px;
+	font-size: 16px;
+	padding: 0 0 0 10px; 
+}
+#login-box input[type='submit']{
+	height: 50px;
+	width: 310px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 10px;
+	background-color: #d56d48;
+	border:0px;
+}
+#shiva-img{
+	position: relative;
+	top: 100px;
+	z-index: 100;
+	height: 150px;
+	width: 150px;
+	border: 10px #d56d48 solid;
+	border-radius: 50%;
+	background-image: url('../img/shiva.png');
+	background-size: contain;
+}
+#login-box div{
+	margin: 10px 0px;
+}

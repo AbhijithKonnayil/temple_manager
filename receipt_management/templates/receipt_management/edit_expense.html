@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<section>
+	<div id="report">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>Category</td>
+					<td>{{form.category}}</td>
+				</tr>
+				<tr>
+					<td>Amount</td>
+					<td>{{form.amount}}</td>
+				</tr>
+				<tr>
+					<td>Remark</td>
+					<td>{{form.remark}}</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Update" name="">	</td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+</section>
+{% endblock %}

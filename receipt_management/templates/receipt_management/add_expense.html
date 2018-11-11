@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<section>
+	<div id="report">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>Category</td>
+					<td>{{form.category}}</td>
+				</tr>
+				<tr>
+					<td>Amount</td>
+					<td>{{form.amount}}</td>
+				</tr>
+				<tr>
+					<td>Remark</td>
+					<td>{{form.remark}}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="">	</td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+</section>
+
+<section>
+	<div id="report-details">
+		<table>
+		<tr>
+			<th>Si No</th>
+			<th>Date</th>
+			<th>Category</th>
+			<th>Amount</th>
+			<th>Remark</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	{% for each in expense_list %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{each.date}}</td>
+			<td>{{each.category}}</td>
+			<td>{{each.amount}}</td>
+			<td>{{each.remark}}</td>
+			<td><a href="../edit/{{each.id}}">Edit</a></td>
+			<td><a href="../del/{{each.id}}">Delete</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+	</div>
+</section>
+{% endblock %}

@@ -22,16 +22,27 @@ class Receipt(models.Model):
                 )
     name = models.CharField(max_length=50,null=False,blank=False)
     star = models.CharField(max_length=20, choices=STAR_CHOICES,)
-    total_amount = models.FloatField()
+    total_amount = models.FloatField(default=0)
+    date=models.DateField(auto_now=True)
 
     def __str__(self):
-        return "{} {} {}".format(self.id,self.name,self.star)
+        return "{} {} {} {}".format(self.id,self.name,self.star,self.date)
 
 class ReceiptItem(models.Model):
     vazhipadu = models.ForeignKey(Vazhipadu,null=True,on_delete=models.SET_NULL)
     count = models.IntegerField()
     receipt= models.ForeignKey(Receipt,related_name='receipt_item',on_delete=models.CASCADE,null=False,blank=True)
-    amount = models.FloatField()
+    amount = models.FloatField(default=0)
 
     def __str__(self):
         return "{} {}".format(self.id,self.vazhipadu)
+
+class Expense(models.Model):
+    category_choices =(('Salary','salary'),)
+    category = models.CharField(max_length=50,null=False,blank=True,choices=category_choices,)
+    amount = models.FloatField(null=False,blank=False,default=0)
+    date=models.DateField()
+    remark = models.CharField(max_length=100,null=True,blank=True)
+
+    def __str__(self):
+        return "{}-{}".format(self.id,self.category)
