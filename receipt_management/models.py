@@ -38,7 +38,7 @@ class ReceiptItem(models.Model):
         return "{} {}".format(self.id,self.vazhipadu)
 
 class Expense(models.Model):
-    category_choices =(('Salary','salary'),)
+    category_choices =(('മാസപ്പടി സദനം','മാസപ്പടി സദനം'),('പാൽ','പാൽ'),('കറന്റ് ബില്','കറന്റ് ബില്'),('ശമ്പളം','ശമ്പളം'),('മറ്റുള്ളവ','മറ്റുള്ളവ '))
     category = models.CharField(max_length=50,null=False,blank=True,choices=category_choices,)
     amount = models.FloatField(null=False,blank=False,default=0)
     date=models.DateField()

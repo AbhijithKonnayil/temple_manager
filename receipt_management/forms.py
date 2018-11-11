@@ -29,7 +29,7 @@ class MonthlyReportForm(forms.Form):
     month=forms.ChoiceField(choices=month_list)
 
 class ExpenseForm(forms.Form):
-    category_choices =(('Salary','salary'),)
+    category_choices =(('മാസപ്പടി സദനം','മാസപ്പടി സദനം'),('പാൽ','പാൽ'),('കറന്റ് ബില്','കറന്റ് ബില്'),('ശമ്പളം','ശമ്പളം'),('മറ്റുള്ളവ','മറ്റുള്ളവ '))
     category = forms.ChoiceField(choices=category_choices,required=True)
     amount = forms.CharField(max_length=20, required=True,widget=TextInput(attrs={}))
     remark = forms.CharField(max_length=100, required=False)
