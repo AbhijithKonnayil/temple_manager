@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from receipt_management.views import add_receipt, view_dashboard, print_receipt, view_report, view_daily_report, view_monthly_report, add_vazhipadu, add_expense, expense_on_date,edit_expense, del_expense
+from receipt_management.views import add_receipt, view_dashboard, print_receipt, view_report, view_daily_report, view_monthly_report, edit_vazhipadu, add_vazhipadu, add_expense, expense_on_date,edit_expense, del_expense
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -33,6 +33,7 @@ urlpatterns = [
     path('reports/monthly', view_monthly_report ,name='view_monthly_report'),
 
     path('vazhipadu/add', add_vazhipadu ,name='add_vazhipadu'),
+    path('vazhipadu/edit/<int:id>', edit_vazhipadu ,name='edit_vazhipadu'),
 
     path('receipt/', add_receipt,name='add_receipt'),
     path('receipt/<int:receipt_id>', print_receipt,name='print_receipt'),

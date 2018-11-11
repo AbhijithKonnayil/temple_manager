@@ -201,6 +201,24 @@ def add_vazhipadu(request):
     else:
         return HttpResponseRedirect('/')
 
+def edit_vazhipadu(request,id):
+    if request.user.is_authenticated:
+        obj = Vazhipadu.objects.get(id=id)
+        if request.method=='POST':
+            form=VazhipaduForm(request.POST)
+            if form.is_valid():
+                obj.title=form.cleaned_data['title']
+                obj.amount=form.cleaned_data['amount']
+                obj.save()
+                return HttpResponseRedirect('./../add')
+        else:
+            form=VazhipaduForm(initial={'title':obj.title,'amount':obj.amount})
+            
+        context={'form':form,}
+        return render(request,'receipt_management/edit_vazhipadu.html',context)  
+    else:
+        return HttpResponseRedirect('/')
+
 def add_expense(request):
     if request.user.is_authenticated:
         if request.method=='POST':

@@ -40,6 +40,7 @@
 					<th>si No</th>
 					<th>Vazhipadu</th>
 					<th>Amount</th>
+					<th>Edit</th>
 				</tr>
 				</tr>
 				{% for each in vazhipadu_list %}
@@ -47,6 +48,7 @@
 						<td>{{forloop.counter}}</td>
 						<td>{{each.title}}</td>
 						<td>{{each.amount}}</td>
+						<td><a href="./edit/{{each.id}}">Edit</a></td>
 					</tr>
 				{% endfor %}
 			</table>
