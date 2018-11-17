@@ -5,6 +5,7 @@
 @media print {
 	@page {
   		width: 150mm;
+  		height: 200mm;
   		margin: 0;
 	}
   	button, nav, header{
@@ -16,6 +17,7 @@
   
   	body{
   		width: 150mm;
+  		height: 200mm;
   		margin-left:-50px;
   		padding: 0;
   		background-color: #333;
@@ -33,24 +35,23 @@
 		width: 140mm;
 	}
 	#receipt span{
-		font-size: 24px;
+		font-size: 16px;
 	}
 	#receipt th{
-		font-size: 20px;
+		font-size: 16px;
+		padding: 5px 20px;
 	}
 	#receipt td{
-		padding: 10px 20px;
-		font-size: 20px;
+		padding: 5px 20px;
+		font-size: 16px;
 	}
 	#temple-title-name{
   	visibility: visible;
   	transform: scale(0.5);
   	text-align: center;
   	border-bottom:1px #000 solid;
-  }
-	th{
-		padding: 3px 10px;
-	}
+  	}
+	
 }
 </style>
 {% endblock %}
@@ -60,30 +61,30 @@
 
 <div id="receipt">
 		<div>
-			<img id="temple-title-name" style="visibility: hidden;" src="{% static '/img/temple_name.png' %}">
+			<img id="temple-title-name" style="visibility: hidden;" src="{% static '/img/temple_name_b.png' %}">
 		</div>
 		<div id="receipt-title">
-				<u>രസീത് </u>
+				<b><u>വഴിപാട് രസീത് </u></b>
 		</div>
 		<div>
 			<div id="receipt-number">
-			<span>രസീത് നംമ്പർ : </span>
+			<span><b>രസീത് നംമ്പർ : </b></span>
 			<span>{{receipt.id}}</span>
 		</div>
 
 		<div id="receipt-date">
-			<span>തീയതി : </span>
+			<span><b>തീയതി : </b></span>
 			<span>{{receipt.date}}</span>
 		</div>
 		</div>
 
 		<div id="receipt-name">
-			<span>പേര് : </span>
+			<span><b>പേര് : </b></span>
 			<span>{{receipt.name}}</span>
 		</div>
 
 		<div id="receipt-star">
-			<span>നക്ഷത്രം : </span>
+			<span><b>നക്ഷത്രം :</b></span>
 			<span>{{receipt.star}}</span>
 		</div>
 
