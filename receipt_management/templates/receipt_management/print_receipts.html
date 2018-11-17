@@ -2,39 +2,10 @@
 {% load static %}
 {% block head %}
 <style type="text/css">
-@media print {
-	@page {
-  		width: 150mm;
-  		height: 200mm;
-  		margin: 0;
-	}
-  	button, nav, header{
-  		visibility: hidden;
-  	}
-  	img{
-  		visibility: visible;
-  	}
-  
-  	body{
-  		width: 150mm;
-  		height: 200mm;
-  		margin-left:-50px;
-  		padding: 0;
-  		background-color: #333;
-  	}
-  
-  #receipt{
-	margin: -100px 10px 20px 10px;
-	padding: 5px 10%;
-	display: flex;
-	border-radius: 10px;
-	justify-content: center;
-	flex-direction: column;
-	}
-	#receipt table{
-		width: 140mm;
-	}
-	#receipt span{
+#printarea{
+  	visibility: hidden;
+  }
+#receipt span{
 		font-size: 16px;
 	}
 	#receipt th{
@@ -45,12 +16,57 @@
 		padding: 5px 20px;
 		font-size: 16px;
 	}
-	#temple-title-name{
-  	visibility: visible;
-  	transform: scale(0.5);
-  	text-align: center;
-  	border-bottom:1px #000 solid;
+	
+@media print {
+	@page {
+  		width: 150mm;
+  		height: 200mm;
+  		margin: 0;
+	}
+
+  	body *{
+  		visibility: hidden;
   	}
+ 
+  	body{
+  		width: 150mm;
+  		height: 200mm;
+  		padding: 0;
+  		background-color: #333;
+  	}
+
+  	#printarea, #printarea *{
+  		visibility: visible;
+ 	}
+ 	#printarea{
+ 	 	position: absolute;
+ 	 	width: 150mm;
+ 	 	top: 100px;
+ 	 	left: -50px;
+ 	}
+ 	#div-temple-title-name{
+ 	 	display: flex;
+ 	 	justify-content: center;
+ 	 	width: 150mm;
+ 	 }
+ 	#temple-title-name{
+	  	transform: scale(0.5);
+	  	text-align: center;
+	  	border-bottom:1px #000 solid;
+	  	display: flex;
+  	}
+ 	#receipt{
+		margin: -100px 10px 20px 10px;
+		padding: 5px 10%;
+		display: flex;
+		border-radius: 10px;
+		justify-content: center;
+		flex-direction: column;
+		width: 140mm;
+	}
+	#receipt table{
+		width: 140mm;
+	}
 	
 }
 </style>
@@ -60,9 +76,6 @@
 <section>
 
 <div id="receipt">
-		<div>
-			<img id="temple-title-name" style="visibility: hidden;" src="{% static '/img/temple_name_b.png' %}">
-		</div>
 		<div id="receipt-title">
 				<b><u>വഴിപാട് രസീത് </u></b>
 		</div>
@@ -123,6 +136,64 @@
           </div>
 </div>
 
+<div id="printarea">
+		<div id="receipt">
+		<div id="div-temple-title-name">
+			<img id="temple-title-name"  src="{% static '/img/temple_name_b.png' %}">
+		</div>
+		<div id="receipt-title">
+				<b><u>വഴിപാട് രസീത് </u></b>
+		</div>
+		<div>
+			<div id="receipt-number">
+			<span><b>രസീത് നംമ്പർ : </b></span>
+			<span>{{receipt.id}}</span>
+		</div>
+
+		<div id="receipt-date">
+			<span><b>തീയതി : </b></span>
+			<span>{{receipt.date}}</span>
+		</div>
+		</div>
+
+		<div id="receipt-name">
+			<span><b>പേര് : </b></span>
+			<span>{{receipt.name}}</span>
+		</div>
+
+		<div id="receipt-star">
+			<span><b>നക്ഷത്രം :</b></span>
+			<span>{{receipt.star}}</span>
+		</div>
+
+			<table border="1">
+                          <thead>
+                            <tr class="border">
+                                <th>ക്രമ നമ്പര്‍</th>
+                                <th>വഴിപാട് ഇനം</th>
+                                <th>തുക</th>
+                            </tr>
+                          </thead>
+                          {% for each in receipt_items %}
+	
+                          <tbody>
+                           <tr>
+								<td>{{forloop.counter}}</td>
+								<td>{{each.vazhipadu}}</td>
+								<td class="number">{{each.vazhipadu.amount}}</td>
+							</tr>
+							{% endfor %}
+                          </tbody>
+				</table>
+		<div  id="grand-total">
+			<h2>ആകെ തുക: Rs {{receipt.total_amount}}	</h2>
+		</div>
+		<div id="user-designation">
+			{{request.user}}
+		</div>
+</div>	
+</div>
 
 
+</section>
 {% endblock %}

@@ -1,10 +1,9 @@
-<!-- {% load static %} -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>ശിവാനന്ദപുരം</title>
-	<!-- <link rel="stylesheet" type="text/css" href ="{% static 'css/style.css' %}"> -->
-	 <link rel="stylesheet" type="text/css" href ="../../../static/css/style.css">
+	<link rel="stylesheet" type="text/css" href ="{% static 'css/style.css' %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	{% block head %}
 	{% endblock %}
@@ -17,7 +16,7 @@
         	<div id="logo">
         		
         	</div>
-            <img id="title" src="../../../static/img/temple_name.png">
+            <img id="title" src="{% static '/img/temple_name.png' %}">
             <nav>
         	<ul>
         		<li><a href="/dashboard">Dashboard</a></li>
