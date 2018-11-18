@@ -29,7 +29,7 @@
   	}
  
   	body{
-  		width: 150mm;
+  		width: 140mm;
   		height: 200mm;
   		padding: 0;
   		background-color: #333;
@@ -40,14 +40,14 @@
  	}
  	#printarea{
  	 	position: absolute;
- 	 	width: 150mm;
+ 	 	width: 140mm;
  	 	top: 100px;
  	 	left: -50px;
  	}
  	#div-temple-title-name{
  	 	display: flex;
  	 	justify-content: center;
- 	 	width: 150mm;
+ 	 	width: 140mm;
  	 }
  	#temple-title-name{
 	  	transform: scale(0.5);
@@ -62,10 +62,10 @@
 		border-radius: 10px;
 		justify-content: center;
 		flex-direction: column;
-		width: 140mm;
+		width: 130mm;
 	}
 	#receipt table{
-		width: 140mm;
+		width: 130mm;
 	}
 	
 }
@@ -169,7 +169,7 @@
 			<table border="1">
                           <thead>
                             <tr class="border">
-                                <th>ക്രമ നമ്പര്‍</th>
+                                <th style="width: 5px;">ക്രമ നമ്പര്‍</th>
                                 <th>വഴിപാട് ഇനം</th>
                                 <th>തുക</th>
                             </tr>
@@ -178,9 +178,9 @@
 	
                           <tbody>
                            <tr>
-								<td>{{forloop.counter}}</td>
+								<td style="width: 5px;">{{forloop.counter}}</td>
 								<td>{{each.vazhipadu}}</td>
-								<td class="number">{{each.vazhipadu.amount}}</td>
+								<td class="number">{{each.amount}}</td>
 							</tr>
 							{% endfor %}
                           </tbody>
