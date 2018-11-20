@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 <section>
     <div id="receipt-form">
-          <form action="" method="POST" autocomplete="on">
+          <form action="" method="POST">
            {% csrf_token %}
           <div class="heading">
               <h3 >രസീത്</h3>
@@ -78,7 +78,7 @@ $(document).ready(function(){
                               <td>{{form.count_1}}</td>
                               <td class="prize1">0.00</td>
                               <td class="total1">0.00</td>
-                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="1" class="add-row-btn">+</button></td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="1" class="add-row-btn">+</div></td>
                             </tr>
 
                             <tr id="row2"class="border">
@@ -87,7 +87,7 @@ $(document).ready(function(){
                               <td>{{form.count_2}}</td>
                               <td class="prize2">0.00</td>
                               <td class="total2">0.00</td>
-                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="2" class="add-row-btn">+</button></td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="2" class="add-row-btn">+</button></td>
                             </tr>
 
                             <tr id="row3" class="border">
@@ -96,7 +96,7 @@ $(document).ready(function(){
                               <td>{{form.count_3}}</td>
                               <td class="prize3">0.00</td>
                               <td class="total3">0.00</td>
-                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button rowno="3" class="add-row-btn">+</button></td>
+                              <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="3" class="add-row-btn">+</button></td>
                             </tr>
 
                             <tr id="row4" class="border">
@@ -112,11 +112,11 @@ $(document).ready(function(){
       
           <div>
               <input type="reset" value="Reset" name="">
-              <input type="submit" value="Add" name="button" />
+              <input type="submit" value="Add" />
           </div>
 
     </div>
-    </form>  
+  </form>
 
 </section>
   
