@@ -32,7 +32,8 @@
   		width: 140mm;
   		height: 150mm;
   		padding: 0;
-  		background-color: #333;
+  		page-break-after: avoid;
+        page-break-before: avoid;
   	}
 
   	#printarea, #printarea *{
@@ -41,6 +42,7 @@
  	#printarea{
  	 	position: absolute;
  	 	width: 140mm;
+ 	 	height: 150mm;
  	 	top: 100px;
  	 	left: -50px;
  	}
@@ -54,7 +56,6 @@
 	  	text-align: center;
 	  	border-bottom:1px #000 solid;
 	  	display: flex;
-	  	background-color: #f00;
   	}
  	#receipt{
 		margin: -90px 10px 20px 10px;
@@ -188,14 +189,20 @@
 								<td class="number">{{each.amount}}</td>
 							</tr>
 							{% endfor %}
+
+							<tr>
+								<td colspan="1" style="border-left:none;border-top:none;border-right:none;border-bottom:none;"><div id="user-designation">
+												{{request.user}}
+												</div>
+								</td>
+
+								<td colspan="2" style="border-left:none;border-top:none;border-right:none;border-bottom:none;"><div  id="grand-total">
+												<h2>ആകെ തുക: Rs {{receipt.total_amount}}	</h2>
+												</div>
+								</td>
+							</tr>
                           </tbody>
 				</table>
-		<div  id="grand-total">
-			<h2>ആകെ തുക: Rs {{receipt.total_amount}}	</h2>
-		</div>
-		<div id="user-designation">
-			{{request.user}}
-		</div>
 </div>	
 </div>
 
