@@ -3,16 +3,12 @@ from django.forms import ModelForm, CharField, TextInput, ChoiceField
 import datetime
 
 class ReceiptForm(forms.Form):
-    name=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'autocomplete':'on'}))
+    name=forms.CharField(max_length=50, required=True,widget=TextInput(attrs={'autocomplete':'on'}))
     star=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'list':'star_choice'}))
     vazhipadu_1=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_1=forms.CharField(max_length=20, required=True,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_2=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_2=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_3=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_3=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
     vazhipadu_4=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'list':'vazhipadu_choice','class':'vazhipadu'}))
-    count_4=forms.CharField(max_length=20, required=False,widget=TextInput(attrs={'class':'count'}))
 
 class VazhipaduForm(forms.Form):
     title = forms.CharField(max_length=25,required=True)

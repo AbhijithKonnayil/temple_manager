@@ -2,9 +2,11 @@
 {% load static %}
 {% block head %}
 <style type="text/css">
+
 #printarea{
-  	visibility: hidden;
-  }
+    visibility: hidden;
+    }
+
 #receipt span{
 		font-size: 16px;
 	}
@@ -73,12 +75,20 @@
 		font-size: 20px;
 		margin-top: -20px;
 	}
-	
 }
 </style>
+<script type="text/javascript">
+	$(document).keypress(function(){
+    var x = event.keyCode;
+    if (x == 13) {  // 27 is the ESC key
+        window.print();
+    }
+	});
+</script>
 {% endblock %}
 
 {% block body %}
+
 <section>
 
 <div id="receipt">
@@ -112,9 +122,7 @@
                             <tr class="border">
                                 <th>ക്രമ നമ്പര്‍</th>
                                 <th>വഴിപാട് ഇനം</th>
-                                <th>എണ്ണം</th>
                                 <th>തുക</th>
-                                <th>ആകെ തുക</th>
                             </tr>
                           </thead>
                           {% for each in receipt_items %}
@@ -123,8 +131,6 @@
                            <tr>
 								<td>{{forloop.counter}}</td>
 								<td>{{each.vazhipadu}}</td>
-								<td class="number">{{each.count}}</td>
-								<td class="number">{{each.vazhipadu.amount}}</td>
 								<td class="number">{{each.amount}}</td>
 							</tr>
 							{% endfor %}
@@ -205,7 +211,5 @@
 				</table>
 </div>	
 </div>
-
-
 </section>
 {% endblock %}

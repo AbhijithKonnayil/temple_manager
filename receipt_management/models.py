@@ -30,7 +30,7 @@ class Receipt(models.Model):
 
 class ReceiptItem(models.Model):
     vazhipadu = models.ForeignKey(Vazhipadu,null=True,on_delete=models.SET_NULL)
-    count = models.IntegerField()
+    count = models.IntegerField(default=1)
     receipt= models.ForeignKey(Receipt,related_name='receipt_item',on_delete=models.CASCADE,null=False,blank=True)
     amount = models.FloatField(default=0)
 

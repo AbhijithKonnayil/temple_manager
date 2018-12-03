@@ -18,11 +18,11 @@ $(document).ready(function(){
         
     });
 
-    $(".count").blur(function(){
+    /*$(".count").blur(function(){
       var row_no = $(this).attr('name').substr(-1);
       var tot = parseInt($("td.prize"+ row_no).text()) * $(this).val();
       $("td.total"+ row_no).html(tot);
-    });
+    });*/
 });
 
 </script>
@@ -65,9 +65,7 @@ $(document).ready(function(){
                             <tr class="border">
                                 <th>ക്രമ നമ്പര്‍</th>
                                 <th>വഴിപാട് ഇനം</th>
-                                <th>എണ്ണം</th>
                                 <th>തുക</th>
-                                <th>ആകെ തുക</th>
                             </tr>
                           </thead>
                           
@@ -75,36 +73,28 @@ $(document).ready(function(){
                             <tr id="row1" class="border">
                               <td>1</td>
                               <td>{{form.vazhipadu_1}}</td>
-                              <td>{{form.count_1}}</td>
                               <td class="prize1">0.00</td>
-                              <td class="total1">0.00</td>
                               <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="1" class="add-row-btn">+</div></td>
                             </tr>
 
                             <tr id="row2"class="border">
                               <td>2</td>
                               <td>{{form.vazhipadu_2}}</td>
-                              <td>{{form.count_2}}</td>
                               <td class="prize2">0.00</td>
-                              <td class="total2">0.00</td>
                               <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="2" class="add-row-btn">+</button></td>
                             </tr>
 
                             <tr id="row3" class="border">
                               <td>3</td>
                               <td>{{form.vazhipadu_3}}</td>
-                              <td>{{form.count_3}}</td>
                               <td class="prize3">0.00</td>
-                              <td class="total3">0.00</td>
                               <td style='border-left:none;border-top:none;border-right:none;border-bottom:none'><button type="button" rowno="3" class="add-row-btn">+</button></td>
                             </tr>
 
                             <tr id="row4" class="border">
                               <td>4</td>
                               <td>{{form.vazhipadu_4}}</td>
-                              <td>{{form.count_4}}</td>
                               <td class="prize4">0.00</td>
-                              <td class="total4">0.00</td>
                             </tr>
                           </tbody>
                 </table>

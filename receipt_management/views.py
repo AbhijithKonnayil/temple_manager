@@ -35,46 +35,35 @@ def add_receipt(request):
                 R=Receipt.objects.create(name=form.cleaned_data['name'],star=form.cleaned_data['star'])
 
                 vazhipadu_1=Vazhipadu.objects.get(title=form.cleaned_data['vazhipadu_1'])
-                # count_1=form.cleaned_data['count_1']
-                print(type(vazhipadu_1.amount))
-                print(type(form.cleaned_data['count_1']))
                 r1=ReceiptItem.objects.create(vazhipadu=vazhipadu_1,
-                                        count=form.cleaned_data['count_1'],
                                         receipt=R,
-                                        amount=vazhipadu_1.amount*int(form.cleaned_data['count_1']),
+                                        amount=vazhipadu_1.amount,
                                         )
                 R.total_amount=R.total_amount+r1.amount
                 
                 if form.cleaned_data['vazhipadu_2']:
                     vazhipadu_2=Vazhipadu.objects.get(title=form.cleaned_data['vazhipadu_2'])
-                    # count_1=form.cleaned_data['count_1']
                     r2=ReceiptItem.objects.create(vazhipadu=vazhipadu_2,
-                                        count=form.cleaned_data['count_2'],
                                         receipt=R,
-                                        amount=vazhipadu_2.amount*int(form.cleaned_data['count_2']),
+                                        amount=vazhipadu_2.amount,
                                         )
                     R.total_amount=R.total_amount+r2.amount
                 if form.cleaned_data['vazhipadu_3']:
                     vazhipadu_3=Vazhipadu.objects.get(title=form.cleaned_data['vazhipadu_3'])
-                    # count_1=form.cleaned_data['count_1']
                     r3=ReceiptItem.objects.create(vazhipadu=vazhipadu_3,
-                                        count=form.cleaned_data['count_3'],
                                         receipt=R,
-                                        amount=vazhipadu_3.amount*int(form.cleaned_data['count_3']),
+                                        amount=vazhipadu_3.amount,
                                         )
                     R.total_amount=R.total_amount+r3.amount
                 if form.cleaned_data['vazhipadu_4']:
                     vazhipadu_4=Vazhipadu.objects.get(title=form.cleaned_data['vazhipadu_4'])
-                    # count_1=form.cleaned_data['count_1']
                     r4=ReceiptItem.objects.create(vazhipadu=vazhipadu_4,
-                                        count=form.cleaned_data['count_4'],
                                         receipt=R,
-                                        amount=vazhipadu_4.amount*int(form.cleaned_data['count_4']),
+                                        amount=vazhipadu_4.amount,
                                         )
                     R.total_amount=R.total_amount+r4.amount
                 R.save()
                 context={'receipt_items':R.receipt_item.all(),'receipt':R}
-                #return render(request,'receipt_management/add_receipts.html',context)  
                 return HttpResponseRedirect('./'+str(R.id))
             form = ReceiptForm()
             vazhipadu_list = Vazhipadu.objects.all()
