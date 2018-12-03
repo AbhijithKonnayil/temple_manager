@@ -80,6 +80,32 @@
 				</th>
 			</tr>
 		</table>
+
+		Expense
+		<table border="1">
+			<tr>
+				<th>Si No</th>
+				<th>Category</th>
+				<th>Amount</th>
+				<th>Remark</th>
+			</tr>
+			{% for each in expense_list %}
+				<tr>
+				<td>{{forloop.counter}}</td>
+				<td>{{each.category}}</td>
+				<td>{{each.amount}}</td>
+				<td>{{each.remark}}</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<th colspan="2">
+					Total
+				</th>
+				<th colspan="2">
+					{{total_expense}}		
+				</th>
+			</tr>
+		</table>
 		
 		</div>
 		

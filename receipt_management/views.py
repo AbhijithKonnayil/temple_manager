@@ -163,7 +163,7 @@ def view_monthly_report(request):
             if form.is_valid():
                 print('valid')
                 month=form.cleaned_data['month']
-                monthly_receipt = Receipt.objects.filter(date__month=month)
+                monthly_receipt = Receipt.objects.filter(date__year=datetime.now().year,date__month=month)
                 print(monthly_receipt)
                 report=ReceiptItem.objects.filter(receipt__in=monthly_receipt).values('vazhipadu').annotate(count=Sum('count'),sum=Sum('amount')).order_by('vazhipadu')    
                 total_sum = ReceiptItem.objects.filter(receipt__in=monthly_receipt).aggregate(Sum('amount'))
@@ -171,13 +171,17 @@ def view_monthly_report(request):
             today=datetime.now()
             form=MonthlyReportForm(initial={'month':today.month})
             month=today.month
-            monthly_receipt = Receipt.objects.filter(date__year=today.year,date__month=today.month)
+            monthly_receipt = Receipt.objects.filter(date__year=today.year,date__month=month)
             print(monthly_receipt)
             report=ReceiptItem.objects.filter(receipt__in=monthly_receipt).values('vazhipadu').annotate(count=Sum('count'),sum=Sum('amount')).order_by('vazhipadu')
             total_sum = ReceiptItem.objects.filter(receipt__in=monthly_receipt).aggregate(Sum('amount'))
             print(report)
             # .values('vazhipadu').annotate(count=Sum('count'),sum=Sum('amount')).order_by('vazhipadu')
-        context={'form':form,'report':report,'total_sum':total_sum['amount__sum'],'month':month_list[int(month)-1]}
+        expense_list = Expense.objects.filter(date__month=month,date__year=datetime.now().year)
+        total_expense = Expense.objects.filter(date__month=month,date__year=datetime.now().year).aggregate(Sum('amount'))
+        context={'form':form,'report':report,'total_sum':total_sum['amount__sum'],
+                    'expense_list':expense_list,'total_expense':total_expense['amount__sum'],
+                    'month':month_list[int(month)-1]}
         return render(request,'receipt_management/monthly_report.html',context)  
     else:
         return HttpResponseRedirect('/')
