@@ -2,6 +2,7 @@
 {% block head %}
   <script>
 $(document).ready(function(){
+    $("#id_name").focus();
     $(".add-row-btn").click(function(){
         var row_no=(parseInt($(this).attr('rowno'))+1);
         $("#row"+row_no).show();
