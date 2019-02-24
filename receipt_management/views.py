@@ -151,8 +151,9 @@ def view_monthly_report(request):
             form=MonthlyReportForm(request.POST)
             if form.is_valid():
                 print('valid')
+                year=form.cleaned_data['year']
                 month=form.cleaned_data['month']
-                monthly_receipt = Receipt.objects.filter(date__year=datetime.now().year,date__month=month)
+                monthly_receipt = Receipt.objects.filter(date__year=year,date__month=month)
                 print(monthly_receipt)
                 report=ReceiptItem.objects.filter(receipt__in=monthly_receipt).values('vazhipadu').annotate(count=Sum('count'),sum=Sum('amount')).order_by('vazhipadu')    
                 total_sum = ReceiptItem.objects.filter(receipt__in=monthly_receipt).aggregate(Sum('amount'))

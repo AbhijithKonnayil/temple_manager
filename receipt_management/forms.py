@@ -22,7 +22,11 @@ month_list=(('01','ജനുവരി | January'),('02','ഫെബ്രുവ�
             ('08','ഓഗസ്റ്റ് | August'),('09','സെപ്റ്റംബർ | September'),('10','ഒക്ടോബർ | October'),
             ('11','നവംബർ | November'),('12','ഡിസംബർ | December'))
 class MonthlyReportForm(forms.Form):
+    def year_choices():
+        return [(r,r) for r in range(2018, datetime.date.today().year+1)]
+
     month=forms.ChoiceField(choices=month_list)
+    year=forms.ChoiceField(choices=year_choices)
 
 class ExpenseForm(forms.Form):
     category_choices =(('മാസപ്പടി സദനം','മാസപ്പടി സദനം'),('പാൽ','പാൽ'),('കറന്റ് ബില്','കറന്റ് ബില്'),('ശമ്പളം','ശമ്പളം'),('മറ്റുള്ളവ','മറ്റുള്ളവ '))
