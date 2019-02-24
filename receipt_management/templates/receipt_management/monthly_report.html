@@ -38,7 +38,10 @@
 		<div>
 			<form action="" method="POST">
 				{% csrf_token %}
-				{{form}}
+				Month : {{form.month}}
+				<br>
+				<br>
+				Year : {{form.year}}
 				<br><br>
 				<input type="submit" name="">
 			</form>

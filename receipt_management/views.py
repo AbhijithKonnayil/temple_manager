@@ -159,7 +159,7 @@ def view_monthly_report(request):
                 total_sum = ReceiptItem.objects.filter(receipt__in=monthly_receipt).aggregate(Sum('amount'))
         else:
             today=datetime.now()
-            form=MonthlyReportForm(initial={'month':today.month})
+            form=MonthlyReportForm(initial={'month':today.month,'year':today.year})
             month=today.month
             monthly_receipt = Receipt.objects.filter(date__year=today.year,date__month=month)
             print(monthly_receipt)
