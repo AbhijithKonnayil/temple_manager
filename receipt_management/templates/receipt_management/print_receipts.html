@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<style type="text/css">
+<link rel="stylesheet" href="{% static 'css/print.css' %}" id="printCss" media="print">
+
+ <style type="text/css">
 
 #printarea{
     visibility: hidden;
@@ -18,65 +20,9 @@
 		padding: 3px 20px;
 		font-size: 15px;
 	}
-	
-@media print {
-	@page {
-  		width: 150mm;
-  		height: 140mm;
-  		margin: 5mm 0 0 0;
-	}
 
-  	body *{
-  		visibility: hidden;
-  	}
- 
-  	body{
-  		width: 140mm;
-  		padding: 0;
-  		page-break-after: avoid;
-        page-break-before: avoid;
-  	}
-
-  	#printarea, #printarea *{
-  		visibility: visible;
- 	}
- 	#printarea{
- 	 	position: absolute;
- 	 	width: 140mm;
- 	 	top: 0px;
- 	 	left: -50px;
- 	}
- 	#div-temple-title-name{
- 	 	display: flex;
- 	 	justify-content: center;
- 	 	width: 140mm;
- 	 }
- 	#temple-title-name{
-	  	transform: scale(0.6);
-	  	text-align: center;
-	  	border-bottom:1px #000 solid;
-	  	display: flex;
-  	}
- 	#receipt{
- 		position: absolute;
- 		top: 0;
-		margin: 0px 10px 0px 10px;
-		padding: 5px 10%;
-		display: flex;
-		border-radius: 10px;
-		justify-content: center;
-		flex-direction: column;
-		width: 130mm;
-	}
-	#receipt table{
-		width: 130mm;
-	}
-	#receipt-title{
-		font-size: 20px;
-		margin-top: -20px;
-	}
-}
 </style>
+
 <script type="text/javascript">
 	$(document).keypress(function(){
     var x = event.keyCode;
@@ -84,6 +30,17 @@
         window.print();
     }
 	});
+
+	function printOnClicked(){
+		document.getElementById('printCss').href = '{% static 'css/print.css' %}';
+		alert(document.getElementById('printCss').href);
+		window.print();
+	}
+	function printNewOnClicked(){
+		document.getElementById('printCss').href = '{% static 'css/print_new.css' %}';
+		alert(document.getElementById('printCss').href);
+		window.print();
+	}
 </script>
 {% endblock %}
 
@@ -144,8 +101,10 @@
 		</div>
 		<div>
               <a href="../receipt/"><button>Add Another</button></a>
-              <button onclick="window.print();" name="button">Print</button>
+              <button onclick="printOnClicked();" name="button">Print</button>
+              <button id="print_btn_new" onclick="printNewOnClicked();" name="button">Print New</button>
           </div>
+
 </div>
 
 <div id="printarea">
