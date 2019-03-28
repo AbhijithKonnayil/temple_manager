@@ -2,7 +2,7 @@
 	@page {
   		width: 150mm;
   		height: 140mm;
-  		margin: 5mm 0 0 0;
+  		margin: 5mm 0 5mm 0;
 	}
 
   	body *{
@@ -16,42 +16,51 @@
         page-break-before: avoid;
   	}
 
-  	#printarea, #printarea *{
+  	#printarea_new, #printarea_new *{
   		visibility: visible;
  	}
- 	#printarea{
+ 	#printarea_new{
  	 	position: absolute;
  	 	width: 140mm;
  	 	top: 0px;
  	 	left: -50px;
  	}
- 	#div-temple-title-name{
- 	 	display: flex;
- 	 	justify-content: center;
- 	 	width: 140mm;
- 	 }
- 	#temple-title-name{
-	  	transform: scale(0.6);
-	  	text-align: center;
-	  	border-bottom:1px #000 solid;
-	  	display: flex;
-  	}
- 	#receipt{
+ 	#receipt_new{
  		position: absolute;
- 		top: 0;
-		margin: 0px 10px 0px 10px;
-		padding: 5px 10%;
+ 		top: 40mm;
+		margin: 0px 0px 0px 0mm;
+		background-color: #852;
 		display: flex;
 		border-radius: 10px;
 		justify-content: center;
 		flex-direction: column;
 		width: 130mm;
 	}
-	#receipt table{
+	#receipt_new table{
+		position: fixed;
+		margin: 0 0 0 10mm;
+		background-color: #ff0;
+		height: 70mm;
+ 		top: 75mm;
 		width: 130mm;
 	}
 	#receipt-title{
 		font-size: 20px;
 		margin-top: -20px;
+	}
+	#receipt-number_new{
+		margin: 0 0 0 45mm;
+	}
+
+	#receipt-name_new{
+		margin: 0 0 0 45mm;
+	}
+
+	#receipt-star_new{
+		margin: 0 0 0 45mm;
+	}
+
+	#receipt-date_new{
+		margin: 0 0 0 50mm;
 	}
 }

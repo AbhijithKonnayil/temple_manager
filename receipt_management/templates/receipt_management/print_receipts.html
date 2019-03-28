@@ -2,6 +2,7 @@
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/print.css' %}" id="printCss" media="print">
+<link rel="stylesheet" href="{% static 'css/print_new.css' %}" id="printCss" media="print">
 
  <style type="text/css">
 
@@ -26,19 +27,21 @@
 <script type="text/javascript">
 	$(document).keypress(function(){
     var x = event.keyCode;
-    if (x == 13) {  // 27 is the ESC key
+    if (x == 13) {
         window.print();
     }
 	});
 
 	function printOnClicked(){
-		document.getElementById('printCss').href = '{% static 'css/print.css' %}';
-		alert(document.getElementById('printCss').href);
+		$('#printarea').show();
+		$('#printarea_new').hide();
+		//document.getElementById('printarea').visibility=visible;
+		//document.getElementById('printarea_new').visibility=hidden;
 		window.print();
 	}
 	function printNewOnClicked(){
-		document.getElementById('printCss').href = '{% static 'css/print_new.css' %}';
-		alert(document.getElementById('printCss').href);
+		$('#printarea').hide();
+		$('#printarea_new').show();
 		window.print();
 	}
 </script>
@@ -145,9 +148,8 @@
                                 <th>തുക</th>
                             </tr>
                           </thead>
-                          {% for each in receipt_items %}
-	
                           <tbody>
+                          {% for each in receipt_items %}
                            <tr>
 								<td style="width: 5px;">{{forloop.counter}}</td>
 								<td>{{each.vazhipadu}}</td>
@@ -170,5 +172,48 @@
 				</table>
 </div>	
 </div>
+
+<div id="printarea_new">
+		<div id="receipt_new">
+			<div>
+				<span id="receipt-number_new">{{receipt.id}}</span>
+				<span id="receipt-date_new">{{receipt.date}}</span>
+			</div>
+
+			<div>
+				<span  id="receipt-name_new">{{receipt.name}}</span>
+			</div>
+
+			<div>
+				<span  id="receipt-star_new">{{receipt.star}}</span>
+			</div>
+
+			<table border="0">
+                          
+                          <tbody>
+                          {% for each in receipt_items %}
+                           <tr>
+								<td style="width: 10mm;">{{forloop.counter}}</td>
+								<td style="width: 75mm;">{{each.vazhipadu}}</td>
+								<td style="width: 25mm;" class="number">{{each.amount}}</td>
+							</tr>
+							{% endfor %}
+
+							<tr>
+								<td colspan="1" style="border-left:none;border-top:none;border-right:none;border-bottom:none;"><div id="user-designation">
+												{{request.user}}
+												</div>
+								</td>
+
+								<td colspan="2" style="border-left:none;border-top:none;border-right:none;border-bottom:none;"><div  id="grand-total">
+												<h2>ആകെ തുക: Rs {{receipt.total_amount}}	</h2>
+												</div>
+								</td>
+							</tr>
+                          </tbody>
+				</table>
+</div>	
+</div>
+
 </section>
 {% endblock %}
