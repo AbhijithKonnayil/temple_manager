@@ -23,22 +23,24 @@
  	 	position: absolute;
  	 	width: 140mm;
  	 	top: 0px;
- 	 	left: -50px;
+ 	 	left: 0px;
+ 	 	background-color: #f65;
  	}
  	#receipt_new{
  		position: absolute;
- 		top: 40mm;
+ 		top: 35mm;
 		margin: 0px 0px 0px 0mm;
 		background-color: #852;
 		display: flex;
 		border-radius: 10px;
 		justify-content: center;
 		flex-direction: column;
-		width: 130mm;
+		width: 140mm;
+		background-color: #656;
 	}
 	#receipt_new table{
 		position: fixed;
-		margin: 0 0 0 10mm;
+		margin: 0 0 0 0;
 		background-color: #ff0;
 		height: 70mm;
  		top: 75mm;
@@ -61,6 +63,7 @@
 	}
 
 	#receipt-date_new{
-		margin: 0 0 0 50mm;
+		margin: 0 0 0 65mm;
+		font-size: 12px;
 	}
 }

@@ -28,6 +28,8 @@
 	$(document).keypress(function(){
     var x = event.keyCode;
     if (x == 13) {
+    	$('#printarea').hide();
+		$('#printarea_new').show();
         window.print();
     }
 	});
