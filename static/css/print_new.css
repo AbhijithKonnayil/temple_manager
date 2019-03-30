@@ -41,8 +41,6 @@
 	#receipt_new table{
 		position: fixed;
 		margin: 0 0 0 0;
-		background-color: #ff0;
-		height: 70mm;
  		top: 75mm;
 		width: 130mm;
 	}
@@ -63,7 +61,7 @@
 	}
 
 	#receipt-date_new{
-		margin: 0 0 0 65mm;
+		margin: 0 0 0 55mm;
 		font-size: 12px;
 	}
 }
