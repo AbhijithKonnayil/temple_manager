@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
   <script>
+    var submit_form = true;
 $(document).ready(function(){
     $("#id_name").focus();
     $(".add-row-btn").click(function(){
@@ -17,6 +18,19 @@ $(document).ready(function(){
           }
         {% endfor %}
         
+    });
+    $("#add_btn").click(function(){
+      if(submit_form)
+          {
+            this.form.submit();
+          }
+      else{
+        alert("Button Pressed twice !!")
+      }
+      
+      submit_form=false;
+
+
     });
 
     /*$(".count").blur(function(){
@@ -102,8 +116,8 @@ $(document).ready(function(){
           </div>
       
           <div>
-              <input type="reset" value="Reset" name="">
-              <input type="submit" value="Add" />
+              <input type="reset"  value="Reset" name="">
+              <input type="submit" onclick="this.disabled=true;" id="add_btn"  value="Add" />
           </div>
 
     </div>
